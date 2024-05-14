@@ -1,0 +1,60 @@
+<div class="search">
+    <form #form="ngForm" (submit)="onSubmit()">
+        <input type="text" placeholder="Search city...." name="city" [(ngModel)]="city_name">
+    </form>
+</div>
+<div class="container" *ngIf="weather_data">
+    <div class="upper-data">
+        <img src="../assets/Pictures/hot.jpeg" alt="Hot Weather" *ngIf="weather_data.current.temp_c > 25">
+        <img src="../assets/Pictures/cold.jpg" alt="Cold Weather" *ngIf="weather_data.current.temp_c < 15">
+
+        <div class="weather-data">
+            <div class="location">{{weather_data.location.name}}</div>
+            <div class="temprature">{{ weather_data.current.temp_c }}°C</div>
+        </div>
+    </div>
+    <div class="lower-data">
+        <div class="more-info-label">
+            More Infomation
+        </div>
+        <div class="more-info-container">
+            <div class="info-block">
+                <div class="info-block-label">
+                    <img src="../assets/Pictures/temprature.png" alt="Temprature">
+                    <span>Temprature</span>
+                </div>
+                <div class="info-block-value">
+                    {{weather_data.current.temp_c}}°C
+                </div>
+            </div>
+            <div class="info-block">
+                <div class="info-block-label">
+                    <img src="../assets/Pictures/pressure.png" alt="Pressure">
+                    <span>Pressure</span>
+                </div>
+                <div class="info-block-value">
+                    {{weather_data.current.pressure_mb}} MB
+                </div>
+            </div>
+            <div class="info-block">
+                <div class="info-block-label">
+                    <img src="../assets/Pictures/humidity.webp" alt="Humidity">
+                    <span>Humidity</span>
+                </div>
+                <div class="info-block-value">
+                    {{weather_data.current.humidity}} %rh
+                </div>
+            </div>
+            <div class="info-block">
+                <div class="info-block-label">
+                    <img src="../assets/Pictures/wind.webp" alt="Wind">
+                    <span>Wind</span>
+                </div>
+                <div class="info-block-value">
+                    {{weather_data.current.wind_kph}} kph
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet>
